@@ -1,9 +1,9 @@
 package obj_reserva;
 
 public class Espaco {
-    int id;
-    String descricao;
-    boolean status;
+    private int id;
+    private String descricao;
+    private boolean status;
 
     public Espaco(int id, String descricao, boolean status){
         this.id = id;
@@ -11,13 +11,27 @@ public class Espaco {
         this.status = status;
     }
 
-    public void reservar_espaco(){
-        if (this.status == true){
-            System.out.println("Espaço reservado com sucesso !!!");
-            this.status = false;
-        }
-        else{
-            System.out.println("Espaço já está reservado por outra pessoa.");
-        }
+    public int getId() {
+        return id;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public boolean solicitar_reserva(){
+        return isStatus();
     }
 }
