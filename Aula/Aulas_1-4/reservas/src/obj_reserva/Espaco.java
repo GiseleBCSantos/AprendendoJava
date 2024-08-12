@@ -32,6 +32,12 @@ public class Espaco {
     }
 
     public boolean solicitar_reserva(){
-        return isStatus();
+        if (isStatus()){
+            setStatus(false);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

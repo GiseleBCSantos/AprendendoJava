@@ -43,6 +43,7 @@ public class Equipamento {
 
     public boolean solicitar_reserva(){
         if (getQuantidade_disponivel() > 0){
+            setQuantidade_disponivel(getQuantidade_disponivel() - 1);
             return true;
         }
         else{

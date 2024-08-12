@@ -23,7 +23,6 @@ public class Reserva {
 
         if (reserva) {
             System.out.println(nome_solicitante + " reservou o espaço " + espaco.getDescricao() + ".\n");
-            this.espaco_reservado.setStatus(false);
         }
         else{
             System.out.println("Espaço " + this.espaco_reservado.getDescricao() + " não disponível para reserva.");
@@ -36,7 +35,6 @@ public class Reserva {
 
         if (reserva){
             System.out.println(nome_solicitante + " reservou o equipamento "+ equipamento.getDescricao() + ".\nQuantidade ainda disponível para reserva: " + this.equipamento_reservado.getQuantidade_disponivel() + "/" + this.equipamento_reservado.getQuantidade_total() + "\n");
-            this.equipamento_reservado.setQuantidade_disponivel(this.equipamento_reservado.getQuantidade_disponivel() - 1);
         }
         else{
             System.out.println("Equipamento " + this.equipamento_reservado.getDescricao() + " não disponível para reserva.\n");
