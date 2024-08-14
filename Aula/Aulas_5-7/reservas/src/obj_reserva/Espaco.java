@@ -1,12 +1,12 @@
 package obj_reserva;
 
 public class Espaco {
-    private int id;
+    private static int id;
     private String descricao;
     private boolean status;
 
-    public Espaco(int id, String descricao, boolean status){
-        this.id = id;
+    public Espaco(String descricao, boolean status){
+        Espaco.id++;
         this.descricao = descricao;
         this.status = status;
     }
@@ -33,7 +33,6 @@ public class Espaco {
 
     public boolean solicitar_reserva(){
         if (isStatus()){
-            setStatus(false);
             return true;
         }
         else{

@@ -1,7 +1,7 @@
 package obj_reserva;
 
 public class Equipamento {
-        private int id;
+        private static int id;
         private String descricao;
         private int quantidade_total;
         private int quantidade_disponivel;
@@ -34,8 +34,8 @@ public class Equipamento {
         this.quantidade_disponivel = quantidade_disponivel;
     }
 
-    public Equipamento(int id, String descricao, int quantidade_total, int quantidade_disponivel){
-        this.id = id;
+    public Equipamento(String descricao, int quantidade_total, int quantidade_disponivel){
+        Equipamento.id++;
         this.descricao = descricao;
         this.quantidade_total = quantidade_total;
         this.quantidade_disponivel = quantidade_disponivel;
@@ -43,7 +43,6 @@ public class Equipamento {
 
     public boolean solicitar_reserva(){
         if (getQuantidade_disponivel() > 0){
-            setQuantidade_disponivel(getQuantidade_disponivel() - 1);
             return true;
         }
         else{
