@@ -1,6 +1,6 @@
 import obj_reserva.Equipamento;
 
-public class Funcionario {
+public abstract class Funcionario {
     static int id;
     String nome;
     String email;

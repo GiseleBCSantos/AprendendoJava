@@ -27,7 +27,7 @@ public class Main {
         controle_espacos.registrar_espaco(sala_b12);
 
 
-        Funcionario funcionario_joao = new Funcionario("Joao", "joao@gmail.com", 1234);
+        Vigia funcionario_joao = new Vigia("Joao", "joao@gmail.com", 1234);
         Chefia chefia_maria = new Chefia("Maria", "maria@gmail.com", "Gerente", "Financeiro", 1234);
 
         ControleFuncionarios controle_funcionarios = new ControleFuncionarios();
