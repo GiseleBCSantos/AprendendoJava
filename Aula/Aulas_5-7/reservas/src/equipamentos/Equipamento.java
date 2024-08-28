@@ -1,4 +1,4 @@
-package obj_reserva;
+package equipamentos;
 
 public class Equipamento {
         private static int id;
@@ -39,15 +39,6 @@ public class Equipamento {
         this.descricao = descricao;
         this.quantidade_total = quantidade_total;
         this.quantidade_disponivel = quantidade_disponivel;
-    }
-
-    public boolean solicitar_reserva(){
-        if (getQuantidade_disponivel() > 0){
-            return true;
-        }
-        else{
-            return false;
-        }
     }
 
 }

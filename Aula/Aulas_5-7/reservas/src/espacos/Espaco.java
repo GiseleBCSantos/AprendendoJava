@@ -1,4 +1,4 @@
-package obj_reserva;
+package espacos;
 
 public class Espaco {
     private static int id;
@@ -31,12 +31,4 @@ public class Espaco {
         this.status = status;
     }
 
-    public boolean solicitar_reserva(){
-        if (isStatus()){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
 }

@@ -1,4 +1,4 @@
-package obj_reserva;
+package espacos;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package obj_reserva;
+package equipamentos;
 
 import java.util.ArrayList;
 
