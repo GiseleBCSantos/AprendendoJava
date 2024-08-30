@@ -1,20 +1,18 @@
 package espacos;
 
 public class Espaco {
-    private static int id;
-    private int id_espaco;
+    private  int id;
     private String descricao;
     private boolean status;
 
-    public Espaco(String descricao, boolean status){
-        this.id_espaco = Espaco.id;
+    public Espaco(int id, String descricao, boolean status){
+        this.id = id;
         this.descricao = descricao;
         this.status = status;
-        Espaco.id++;
     }
 
     public int getId() {
-        return this.id_espaco;
+        return this.id;
     }
 
     public String getDescricao() {
@@ -37,7 +35,7 @@ public class Espaco {
     @Override
     public String toString() {
         return
-"\nid_espaco= " + id_espaco +
+"\nid_espaco= " + id +
 "\ndescricao= " + descricao +
 "\nstatus= " + status  + "\n";
     }
