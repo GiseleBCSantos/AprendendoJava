@@ -75,9 +75,9 @@ public class FuncionarioDao {
         stmt.close();
     }
 
-    public List bucar(String nome) throws SQLException{
+    public Funcionario buscar(String nome) throws SQLException{
         String sql = "select * from funcionarios where nome=?";
-        List<Funcionario> funcionario_por_nome = new ArrayList<Funcionario>();
+        Funcionario funcionario = null;
 
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setString(1, nome);
@@ -85,16 +85,16 @@ public class FuncionarioDao {
 
         while (rs.next()){
             if (rs.getString("senha") != null){
-                funcionario_por_nome.add(new Chefia(rs.getString("nome"), rs.getString("email"), rs.getString("cargo"), rs.getString("setor"), rs.getInt("senha")));
+                funcionario = new Chefia(rs.getString("nome"), rs.getString("email"), rs.getString("cargo"), rs.getString("setor"), rs.getInt("senha"));
             }
             else{
-                funcionario_por_nome.add(new Vigia(rs.getString("nome"), rs.getString("email")));
+                funcionario = new Vigia(rs.getString("nome"), rs.getString("email"));
             }
         }
 
         stmt.close();
 
-        return funcionario_por_nome;
+        return funcionario;
 
     }
 }

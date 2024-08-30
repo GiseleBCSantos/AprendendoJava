@@ -39,7 +39,7 @@ public class EspacoDao {
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()){
-            lista_espacos.add(new Espaco(rs.getString("descricao"), rs.getBoolean("status")));
+            lista_espacos.add(new Espaco(rs.getInt("id"), rs.getString("descricao"), rs.getBoolean("status")));
         }
 
         rs.close();
@@ -47,5 +47,31 @@ public class EspacoDao {
 
         return lista_espacos;
 
+    }
+
+    public Espaco get_item(String decricao) throws SQLException{
+        String sql = "select * from espacos where descricao=?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        Espaco espaco = null;
+
+        stmt.setString(1, decricao);
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()){
+            espaco = new Espaco(rs.getInt("id"),rs.getString("descricao"), rs.getBoolean("status"));
+        }
+
+        rs.close();
+        stmt.close();
+
+        return espaco;
+    }
+
+    public void remove(int id) throws SQLException{
+        String sql = "delete from espaco where id=?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, id);
+        stmt.execute();
+        stmt.close();
     }
 }

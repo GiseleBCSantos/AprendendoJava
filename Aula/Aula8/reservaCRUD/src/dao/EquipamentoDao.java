@@ -62,13 +62,10 @@ public class EquipamentoDao {
         return lista_equipamentos;
     }
 
-    public Equipamento get_item() throws SQLException{
+    public Equipamento get_item(String descricao) throws SQLException{
         String sql = "select * from equipamentos where descricao=?";
         PreparedStatement stmt = conn.prepareStatement(sql);
         Equipamento equipamento = null;
-
-        System.out.println("Qual a descricao do equipamento desejado? ");
-        String descricao = sc.next();
 
         stmt.setString(1, descricao);
 
@@ -133,4 +130,7 @@ public class EquipamentoDao {
             throw new RuntimeException(e);
         }
     }
+
+
+
 }
