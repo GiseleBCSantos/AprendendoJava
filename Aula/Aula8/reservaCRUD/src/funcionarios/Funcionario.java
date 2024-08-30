@@ -42,4 +42,9 @@ public abstract class Funcionario implements EnviarEmail {
         System.out.println("\n*** Email enviado***\nVoce fez uma reserva na data "+data+" .\n*********************\n");
     }
 
+    @Override
+    public String toString() {
+        return "\nNome: " + getNome() +
+                "\nEmail: " + getEmail() ;
+    }
 }
