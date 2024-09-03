@@ -1,9 +1,6 @@
-package dao;
+package funcionarios;
 
 import connection.ConnectionFactory;
-import funcionarios.Chefia;
-import funcionarios.Funcionario;
-import funcionarios.Vigia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

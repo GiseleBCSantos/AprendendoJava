@@ -1,7 +1,6 @@
-package dao;
+package espacos;
 
 import connection.ConnectionFactory;
-import espacos.Espaco;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

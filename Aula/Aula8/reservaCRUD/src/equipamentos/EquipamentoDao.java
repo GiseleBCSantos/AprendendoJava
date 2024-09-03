@@ -1,8 +1,7 @@
-package dao;
+package equipamentos;
 
 
 import connection.ConnectionFactory;
-import equipamentos.Equipamento;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

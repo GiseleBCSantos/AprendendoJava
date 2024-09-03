@@ -1,11 +1,13 @@
-package dao;
+package reservas;
 
 import connection.ConnectionFactory;
+import equipamentos.EquipamentoDao;
+import espacos.EspacoDao;
+import funcionarios.FuncionarioDao;
 import equipamentos.Equipamento;
 import espacos.Espaco;
 import funcionarios.Chefia;
 import funcionarios.Funcionario;
-import reservas.Reserva;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -95,6 +97,8 @@ public class ReservaDao {
 
         stmt.execute();
         stmt.close();
+
+        equipamento.setQuantidade_disponivel(equipamento.getQuantidade_disponivel() - 1);
     }
 
     public void reservar_espaco(Espaco espaco) throws SQLException{
@@ -106,6 +110,9 @@ public class ReservaDao {
 
         stmt.execute();
         stmt.close();
+
+        espaco.setStatus(false);
+
     }
 
 

@@ -1,12 +1,11 @@
-import dao.EquipamentoDao;
-import dao.EspacoDao;
-import dao.FuncionarioDao;
-import dao.ReservaDao;
+import equipamentos.EquipamentoDao;
+import espacos.EspacoDao;
+import funcionarios.FuncionarioDao;
+import reservas.ReservaDao;
 import equipamentos.Equipamento;
 import espacos.Espaco;
 import funcionarios.Chefia;
 import funcionarios.Funcionario;
-import funcionarios.Vigia;
 import reservas.Reserva;
 
 import java.sql.SQLException;

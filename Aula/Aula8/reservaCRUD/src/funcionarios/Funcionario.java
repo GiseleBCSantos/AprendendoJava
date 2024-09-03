@@ -1,7 +1,5 @@
 package funcionarios;
 
-import dao.FuncionarioDao;
-import equipamentos.Equipamento;
 import interfaces.EnviarEmail;
 
 public abstract class Funcionario implements EnviarEmail {
