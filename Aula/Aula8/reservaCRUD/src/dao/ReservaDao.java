@@ -31,6 +31,7 @@ public class ReservaDao {
                 System.out.println("Insira sua senha: ");
                 int senha = sc.nextInt();
                 if (((Chefia) reserva.getSolicitante()).autenticar(senha)){
+                    System.out.println(reserva.getEspaco_reservado().isStatus());
                     if (reserva.getEspaco_reservado().isStatus()) {
                         sql = "insert into reservas (data_reserva, solicitante, espaco) values (?, ?, ?)";
 
@@ -45,6 +46,8 @@ public class ReservaDao {
 
                         reservar_espaco(reserva.getEspaco_reservado());
                         reserva.getSolicitante().enviar_email(reserva.getData_reserva());
+
+                        System.out.println("Espaco reservado com sucesso!");
                     } else {
                         System.out.println("Indisponivel para reserva.");
                     }
@@ -74,6 +77,8 @@ public class ReservaDao {
 
                 reservar_equipamento(reserva.getEquipamento_reservado());
                 reserva.getSolicitante().enviar_email(reserva.getData_reserva());
+
+                System.out.println("Equipamento reservado com sucesso!");
             }
             else{
                 System.out.println("Indisponivel para reserva.");
