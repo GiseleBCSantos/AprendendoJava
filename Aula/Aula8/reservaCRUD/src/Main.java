@@ -34,8 +34,6 @@ public class Main {
 //        funcionarioDao.add(new Vigia("Joao", "joao@gmail.com"));
 
         List<Funcionario> lista_funcionarios = funcionarioDao.list_funcionarios();
-        List<Equipamento> lista_equipamentos = equipamentoDao.get_list();
-        List<Espaco> lista_espacos = espacoDao.get_list();
 
         boolean app_on = true;
 
@@ -63,7 +61,7 @@ public class Main {
 
 
                 if (opcao_reserva == 1){
-
+                    List<Equipamento> lista_equipamentos = equipamentoDao.get_list();
                     exibir_lista_nomes(lista_equipamentos, "EQUIPAMENTOS");
                     int resposta_equipamento = get_number_in_range(0, lista_equipamentos.size(), sc);
 
@@ -76,6 +74,7 @@ public class Main {
 
                 if (opcao_reserva == 2){
                     if ((funcionario_atual instanceof  Chefia)){
+                        List<Espaco> lista_espacos = espacoDao.get_list();
                         exibir_lista_nomes(lista_espacos, "ESPACOS");
                         int resposta_espaco = get_number_in_range(0, lista_espacos.size(), sc);
                         Espaco espaco_atual = lista_espacos.get(resposta_espaco - 1);
@@ -102,11 +101,9 @@ public class Main {
 
 
     public static void exibir_lista_nomes(List lista, String tipo) throws SQLException{
-//        List<String> lista_nomes = new ArrayList<String>();
         System.out.println("**** " + tipo + " ****");
 
         for (int i=0;i<lista.size();i++){
-//            lista_nomes.add(lista_funcionarios.get(i).getNome());
             if (lista.get(i) instanceof Funcionario) {
                 System.out.println(i+1 + " - " + ((Funcionario) lista.get(i)).getNome());
             }
@@ -122,7 +119,7 @@ public class Main {
 
     public static int get_number_in_range(int min, int max, Scanner sc){
         int number = sc.nextInt();
-        return number <= max || number >= min ? number : get_number_in_range(min, max, sc);
+        return number <= max && number >= min ? number : get_number_in_range(min, max, sc);
     }
 
     public static String obter_data(Scanner sc){
