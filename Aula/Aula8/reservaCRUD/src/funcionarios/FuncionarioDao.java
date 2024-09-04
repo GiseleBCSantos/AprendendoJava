@@ -38,7 +38,7 @@ public class FuncionarioDao {
         stmt.close();
     }
 
-    public List list_funcionarios() throws SQLException{
+    public List get_list() throws SQLException{
         List<Funcionario> lista_funcionarios = new ArrayList<Funcionario>();
         String sql = "select * from funcionarios";
 
@@ -61,18 +61,7 @@ public class FuncionarioDao {
         return lista_funcionarios;
     }
 
-    public void remove(int id) throws SQLException{
-        String sql = "delete from funcionarios where id=?";
-
-        PreparedStatement stmt = conn.prepareStatement(sql);
-
-        stmt.setInt(1, id);
-
-        stmt.execute();
-        stmt.close();
-    }
-
-    public Funcionario buscar(String nome) throws SQLException{
+    public Funcionario get_item(String nome) throws SQLException{
         String sql = "select * from funcionarios where nome=?";
         Funcionario funcionario = null;
 
@@ -94,4 +83,17 @@ public class FuncionarioDao {
         return funcionario;
 
     }
+
+    public void remove(int id) throws SQLException{
+        String sql = "delete from funcionarios where id=?";
+
+        PreparedStatement stmt = conn.prepareStatement(sql);
+
+        stmt.setInt(1, id);
+
+        stmt.execute();
+        stmt.close();
+    }
+
+
 }

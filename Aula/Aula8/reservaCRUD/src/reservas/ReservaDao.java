@@ -124,7 +124,7 @@ public class ReservaDao {
 
         while (rs.next()){
             FuncionarioDao funcionarioDao = new FuncionarioDao();
-            Funcionario funcionario = funcionarioDao.buscar(rs.getString("solicitante"));
+            Funcionario funcionario = funcionarioDao.get_item(rs.getString("solicitante"));
 
             if (rs.getString("espaco") != null){
                 EspacoDao espacoDao = new EspacoDao();
@@ -157,7 +157,7 @@ public class ReservaDao {
 
         while (rs.next()){
             FuncionarioDao funcionarioDao = new FuncionarioDao();
-            Funcionario funcionario = funcionarioDao.buscar(rs.getString("solicitante"));
+            Funcionario funcionario = funcionarioDao.get_item(rs.getString("solicitante"));
 
             if (rs.getString("espaco") != null){
                 EspacoDao espacoDao = new EspacoDao();

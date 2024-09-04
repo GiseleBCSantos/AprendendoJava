@@ -33,7 +33,7 @@ public class Main {
 //        funcionarioDao.add(new Chefia("Maria", "maria@gmail.com", "Gerente", "Financeiro", 1234));
 //        funcionarioDao.add(new Vigia("Joao", "joao@gmail.com"));
 
-        List<Funcionario> lista_funcionarios = funcionarioDao.list_funcionarios();
+        List<Funcionario> lista_funcionarios = funcionarioDao.get_list();
 
         boolean app_on = true;
 
