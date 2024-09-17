@@ -13,7 +13,7 @@ import static utils.Utils.get_number_in_range;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class TestesMVC {
+public class MainMVC {
     public static void main(String[] args) throws Exception {
         Scanner sc = null;
         boolean app_on = true;
