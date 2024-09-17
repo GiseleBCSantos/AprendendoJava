@@ -1,3 +1,8 @@
+import classes.funcionario.Vigia;
+import controllers.EquipamentoController;
+import controllers.EspacoController;
+import controllers.FuncionarioController;
+import controllers.ReservaController;
 import dao.EquipamentoDao;
 import dao.EspacoDao;
 import dao.FuncionarioDao;
@@ -7,6 +12,14 @@ import classes.espaco.Espaco;
 import classes.funcionario.Chefia;
 import classes.funcionario.Funcionario;
 import classes.reserva.Reserva;
+import models.EquipamentoModel;
+import models.EspacoModel;
+import models.FuncionarioModel;
+import models.ReservaModel;
+import views.EquipamentoView;
+import views.EspacoView;
+import views.FuncionarioView;
+import views.ReservaView;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -126,4 +139,6 @@ public class Main {
         System.out.println("Para qual data deseja reservar? ");
         return sc.next();
     }
+
+
 }

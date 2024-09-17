@@ -21,8 +21,12 @@ public class EspacoModel {
         return espacoDao.get_list();
     }
 
-    public Espaco get_item(String descricao) throws SQLException{
+    public Espaco get_item_byDescricao(String descricao) throws SQLException{
         return espacoDao.get_item_byDescricao(descricao);
+    }
+
+    public Espaco get_item_byId(int id) throws SQLException {
+        return espacoDao.get_item_byId(id);
     }
 
     public void modificar_espaco(int id, Espaco espaco) throws SQLException {

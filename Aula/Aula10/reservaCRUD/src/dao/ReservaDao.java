@@ -31,7 +31,6 @@ public class ReservaDao {
                 System.out.println("Insira sua senha: ");
                 int senha = sc.nextInt();
                 if (((Chefia) reserva.getSolicitante()).autenticar(senha)){
-                    System.out.println(reserva.getEspaco_reservado().isStatus());
                     if (reserva.getEspaco_reservado().isStatus()) {
                         sql = "insert into reservas (data_reserva, solicitante, espaco) values (?, ?, ?)";
 
@@ -47,7 +46,6 @@ public class ReservaDao {
                         reservar_espaco(reserva.getEspaco_reservado());
                         reserva.getSolicitante().enviar_email(reserva.getData_reserva());
 
-                        System.out.println("Espaco reservado com sucesso!");
                     } else {
                         System.out.println("Indisponivel para reserva.");
                     }
@@ -78,7 +76,6 @@ public class ReservaDao {
                 reservar_equipamento(reserva.getEquipamento_reservado());
                 reserva.getSolicitante().enviar_email(reserva.getData_reserva());
 
-                System.out.println("Equipamento reservado com sucesso!");
             }
             else{
                 System.out.println("Indisponivel para reserva.");
@@ -128,14 +125,18 @@ public class ReservaDao {
                 EspacoDao espacoDao = new EspacoDao();
                 Espaco espaco = espacoDao.get_item_byDescricao(rs.getString("espaco"));
 
-                lista_reservas.add(new Reserva(rs.getString("data_reserva"), funcionario, espaco));
+                Reserva reserva = new Reserva(rs.getString("data_reserva"), funcionario, espaco);
+                reserva.setId(rs.getInt("id"));
+                lista_reservas.add(reserva);
             }
 
             if (rs.getString("equipamento") != null){
                 EquipamentoDao equipamentoDao = new EquipamentoDao();
                 Equipamento equipamento = equipamentoDao.get_item_byDescricao(rs.getString("equipamento"));
 
-                lista_reservas.add(new Reserva(rs.getString("data_reserva"), funcionario, equipamento));
+                Reserva reserva = new Reserva(rs.getString("data_reserva"), funcionario, equipamento);
+                reserva.setId(rs.getInt("id"));
+                lista_reservas.add(reserva);
             }
         }
 
@@ -173,6 +174,37 @@ public class ReservaDao {
         }
 
     return reserva;
+    }
+
+    public Reserva list_byId(int id) throws SQLException{
+        String sql = "select * from reservas where id=?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+
+        stmt.setInt(1, id);
+
+        ResultSet rs = stmt.executeQuery();
+
+        Reserva reserva = null;
+
+        while (rs.next()){
+            FuncionarioDao funcionarioDao = new FuncionarioDao();
+            Funcionario funcionario = funcionarioDao.get_item_byNome(rs.getString("solicitante"));
+
+            if (rs.getString("espaco") != null){
+                EspacoDao espacoDao = new EspacoDao();
+                Espaco espaco = espacoDao.get_item_byDescricao(rs.getString("espaco"));
+
+                reserva = new Reserva(rs.getString("data_reserva"), funcionario, espaco);
+            }
+
+            if (rs.getString("equipamento") != null){
+                EquipamentoDao equipamentoDao = new EquipamentoDao();
+                Equipamento equipamento = equipamentoDao.get_item_byDescricao(rs.getString("equipamento"));
+
+                reserva = new Reserva(rs.getString("data_reserva"), funcionario, equipamento);
+            }
+        }
+        return reserva;
     }
 
     public void delete(int id) throws SQLException{

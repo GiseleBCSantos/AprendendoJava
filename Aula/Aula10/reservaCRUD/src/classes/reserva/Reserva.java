@@ -71,7 +71,7 @@ public class Reserva {
         if (espaco_reservado != null) {
             txt_reserva += "\nEspaco: " + espaco_reservado.getDescricao() + "\n";
         }
-        if (equipamento_reservado != null) {
+        else if (equipamento_reservado != null) {
             txt_reserva += "\nEquipamento: " + equipamento_reservado.getDescricao() + "\n";
         }
 
