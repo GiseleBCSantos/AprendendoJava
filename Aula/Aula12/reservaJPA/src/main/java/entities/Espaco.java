@@ -55,10 +55,10 @@ public class Espaco {
 
     @Override
     public String toString() {
-        return "Espaco{" +
-                "id=" + id +
-                ", descricao='" + descricao + '\'' +
-                ", status=" + status +
-                '}';
+        return
+                "\nid= " + id +
+                "\ndescricao= " + descricao + '\'' +
+                "\nstatus= " + status +
+                "\n";
     }
 }

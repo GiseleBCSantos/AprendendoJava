@@ -61,12 +61,11 @@ public class Equipamento {
 
     @Override
     public String toString() {
-        return "Equipamento{" +
-                "id=" + id +
-                ", descricao='" + descricao + '\'' +
-                ", quantidadeTotal=" + quantidadeTotal +
-                ", quantidadeDisponivel=" + quantidadeDisponivel +
-                '}';
+        return
+                "\nid=" + id +
+                "\ndescricao='" + descricao + '\'' +
+                "\nquantidadeTotal=" + quantidadeTotal +
+                "\nquantidadeDisponivel=" + quantidadeDisponivel + "\n";
     }
 
     @Override
