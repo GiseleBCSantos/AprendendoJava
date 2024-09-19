@@ -12,19 +12,25 @@ public class Exercicio {
 
 
         while (passagensVendidas < 200) {
-            int pessoasPresentes = (int) (passagensVendidas*(1-noShow));
-
+            int pessoasNoShow = arredondar(passagensVendidas*noShow);
+            int pessoasPresentes = passagensVendidas - pessoasNoShow;
             int pessoasExtras = pessoasPresentes > lugares ? pessoasPresentes - lugares : 0;
-            int pessoasNoShow = passagensVendidas - pessoasPresentes;
+
 
 
             System.out.println(
                     "Passagens vendidas= " + passagensVendidas +
                     " | Passageiros presentes= " + pessoasPresentes +
+                    " | Passageiros faltosos= " + pessoasNoShow +
+                    " | Passageiros extras= " + pessoasExtras +
                     " | Lucro para empresa= " + (passagensVendidas*custoPassagem + pessoasNoShow*multaNoShow - (pessoasExtras*(multaExtra+custoPassagem))
             ));
 
             passagensVendidas++;
         }
+    }
+
+    public static int arredondar(double value){
+        return (int) (value+0.5);
     }
 }
