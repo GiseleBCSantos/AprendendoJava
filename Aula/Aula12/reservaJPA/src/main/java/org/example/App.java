@@ -5,7 +5,6 @@ import dao.EspacoDao;
 import dao.FuncionarioDao;
 import dao.ReservaDao;
 import entities.*;
-import org.hibernate.sql.CacheJoinFragment;
 
 import java.util.List;
 import static util.Utils.pressEnterToContinue;
@@ -234,14 +233,14 @@ public class App
 
         System.out.println("----------------------------");
 
-        Reserva reserva1 = reservaDao.list_byId(1);
+        Reserva reserva1 = reservaDao.get_byId(1);
         System.out.println(reserva1);
         System.out.println("Listar reserva por id");
         pressEnterToContinue();
 
         System.out.println("----------------------------");
 
-        Reserva reserva3 = reservaDao.list_byNome_byData("Joao", "15/05/2025");
+        Reserva reserva3 = reservaDao.get_byNome_byData("Joao", "15/05/2025");
         System.out.println(reserva3);
         System.out.println("Listar reserva por nome e data");
         pressEnterToContinue();

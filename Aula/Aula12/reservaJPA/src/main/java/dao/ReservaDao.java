@@ -56,7 +56,7 @@ public class ReservaDao {
         }
     }
 
-    public Reserva list_byNome_byData(String nome, String data) throws Exception{
+    public Reserva get_byNome_byData(String nome, String data) throws Exception{
         EntityManager manager = HibernateUtil.getEntityManager();
         Funcionario funcionario_buscado = funcionarioDao.get_byNome(nome);
         try{
@@ -71,7 +71,7 @@ public class ReservaDao {
         }
     }
 
-    public Reserva list_byId(int id) throws Exception{
+    public Reserva get_byId(int id) throws Exception{
         EntityManager manager = HibernateUtil.getEntityManager();
         try{
             return manager.find(Reserva.class, id);
