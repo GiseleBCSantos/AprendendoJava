@@ -8,15 +8,11 @@ import entities.Espaco;
 
 import java.util.List;
 
-public class ReservaModel implements EnviarEmail {
+public class ReservaModel {
     ReservaDao reservaDao;
 
     public ReservaModel(){
         reservaDao = new ReservaDao();
-    }
-
-    public void enviarEmail(String email, String data){
-        System.out.println("Email enviado para o endereco " + email + ". Reserva cadastrada para a data: " + data);
     }
 
     public void adicionarReserva(Reserva reserva) throws Exception{

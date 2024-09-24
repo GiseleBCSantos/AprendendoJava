@@ -97,7 +97,7 @@ public class ReservaController {
             reserva.setData(data);
             reservaModel.adicionarReserva(reserva);
             reservaView.exibirMensagem("Reserva adicionada com sucesso!");
-            reservaModel.enviarEmail(funcionario_desejado.getEmail(), data);
+            reservaView.enviarEmail(funcionario_desejado.getEmail(), data);
         }else{
             System.out.println("Falha ao adicionar reserva.");
         }
