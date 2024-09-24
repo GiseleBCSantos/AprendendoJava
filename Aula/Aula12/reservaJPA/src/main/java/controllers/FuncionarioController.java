@@ -65,7 +65,7 @@ public class FuncionarioController {
     public void listar_funcionarios() throws Exception{
         List<Funcionario> funcionarios = funcionarioModel.listarFuncionarios();
         if (funcionarios.isEmpty()){
-            funcionarioView.exibirMensagem("Nenhum espaco cadastrado.");
+            funcionarioView.exibirMensagem("Nenhum funcionario cadastrado.");
         }else{
             funcionarioView.imprimirFuncionarios(funcionarios);
         }

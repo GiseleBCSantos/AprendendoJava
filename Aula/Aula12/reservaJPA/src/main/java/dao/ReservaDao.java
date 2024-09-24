@@ -1,10 +1,9 @@
 package dao;
 
-import entities.Chefia;
-import entities.Funcionario;
-import entities.Reserva;
+import entities.*;
 import util.HibernateUtil;
 
+import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
@@ -118,6 +117,36 @@ public class ReservaDao {
             tx.commit();
         } catch (Exception e) {
             throw new Exception(colorirErro("Erro ao deletar reserva."));
+        } finally {
+            manager.close();
+        }
+    }
+
+    public void reservarEspaco(Espaco espaco) throws Exception{
+        EntityManager manager = HibernateUtil.getEntityManager();
+        EntityTransaction tx = manager.getTransaction();
+        try{
+            tx.begin();
+            Espaco espacoManipulado = manager.find(Espaco.class, espaco.getId());
+            espacoManipulado.setStatus(false);
+            tx.commit();
+        } catch (Exception e){
+            throw new Exception("Erro ao reservar espaco.");
+        } finally {
+            manager.close();
+        }
+    }
+
+    public void reservarEquipamento(Equipamento equipamento) throws Exception{
+        EntityManager manager = HibernateUtil.getEntityManager();
+        EntityTransaction tx = manager.getTransaction();
+        try{
+            tx.begin();
+            Equipamento equipamentoManipulado = manager.find(Equipamento.class, equipamento.getId());
+            equipamentoManipulado.setQuantidadeDisponivel(equipamentoManipulado.getQuantidadeDisponivel() - 1);
+            tx.commit();
+        } catch (Exception e){
+            throw new Exception("Erro ao reservar espaco.");
         } finally {
             manager.close();
         }

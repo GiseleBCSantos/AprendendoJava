@@ -8,7 +8,7 @@ public class FuncionarioView
 {
     public void imprimirFuncionarios(List<Funcionario> funcionarioList){
         if( funcionarioList.isEmpty()){
-            System.out.println("Nao hha funcionarios cadastrados!");
+            System.out.println("Nao ha funcionarios cadastrados!");
         }
         else{
             for (Funcionario funcionario : funcionarioList){

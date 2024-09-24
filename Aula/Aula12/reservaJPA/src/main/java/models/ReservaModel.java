@@ -1,15 +1,22 @@
 package models;
 
 import dao.ReservaDao;
+import entities.Equipamento;
 import entities.Reserva;
+import interfaces.EnviarEmail;
+import entities.Espaco;
 
 import java.util.List;
 
-public class ReservaModel {
+public class ReservaModel implements EnviarEmail {
     ReservaDao reservaDao;
 
     public ReservaModel(){
         reservaDao = new ReservaDao();
+    }
+
+    public void enviarEmail(String email, String data){
+        System.out.println("Email enviado para o endereco " + email + ". Reserva cadastrada para a data: " + data);
     }
 
     public void adicionarReserva(Reserva reserva) throws Exception{
@@ -34,5 +41,13 @@ public class ReservaModel {
 
     public void deletarReserva(int id) throws Exception{
         reservaDao.delete(id);
+    }
+
+    public void reservarEspaco(Espaco espaco) throws Exception {
+        reservaDao.reservarEspaco(espaco);
+    }
+
+    public void reservarEquipamento(Equipamento equipamento) throws Exception {
+        reservaDao.reservarEquipamento(equipamento);
     }
 }

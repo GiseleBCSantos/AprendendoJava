@@ -1,15 +1,22 @@
 package models;
 
 import dao.FuncionarioDao;
+import entities.Chefia;
 import entities.Funcionario;
+import interfaces.Autenticar;
 
 import java.util.List;
 
-public class FuncionarioModel {
+public class FuncionarioModel implements Autenticar {
     FuncionarioDao funcionarioDao;
 
     public FuncionarioModel(){
         funcionarioDao = new FuncionarioDao();
+    }
+
+    @Override
+    public boolean autenticarFuncionario(Chefia chefia, int senha) {
+        return chefia.getSenha() == senha;
     }
 
     public void adicionarFuncionario(Funcionario funcionario) throws Exception{

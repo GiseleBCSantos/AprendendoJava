@@ -1,9 +1,6 @@
 package controllers;
 
-import entities.Equipamento;
-import entities.Espaco;
-import entities.Funcionario;
-import entities.Reserva;
+import entities.*;
 import models.EquipamentoModel;
 import models.EspacoModel;
 import models.FuncionarioModel;
@@ -52,8 +49,7 @@ public class ReservaController {
         int codigo_func = sc.nextInt();
         Funcionario funcionario_desejado = funcionarioModel.obterFuncionario_byId(codigo_func);
 
-        System.out.println("Qual a data para reserva?");
-        String data = get_text(sc);
+
 
         Reserva reserva = null;
 
@@ -64,31 +60,44 @@ public class ReservaController {
             int id_desejado = sc.nextInt();
             Equipamento equipamento_reservado = equipamentoModel.obterEquipamento_byId(id_desejado);
 
-            if (funcionario_desejado != null && equipamento_reservado != null){
+            if (funcionario_desejado != null && equipamento_reservado != null && equipamento_reservado.getQuantidadeDisponivel() > 0){
                 reserva = new Reserva();
-                reserva.setData(data);
                 reserva.setSolicitante(funcionario_desejado);
                 reserva.setEquipamento(equipamento_reservado);
+                reservaModel.reservarEquipamento(equipamento_reservado);
             }
         }
         else{
-            List<Espaco> lista_espacos = espacoModel.listarEspacos();
-            espacoView.imprimirEspacos(lista_espacos);
-            System.out.println("Qual o id do espaco que deseja? ");
-            int id_desejado = sc.nextInt();
-            Espaco espaco_reservado = espacoModel.obterEspaco_byId(id_desejado);
+            if (funcionario_desejado instanceof Chefia){
+                System.out.println("Insira sua senha: ");
+                int senha = sc.nextInt();
+                if (funcionarioModel.autenticarFuncionario(((Chefia) funcionario_desejado), senha)){
 
-            if (funcionario_desejado != null && espaco_reservado != null) {
-                reserva = new Reserva();
-                reserva.setData(data);
-                reserva.setSolicitante(funcionario_desejado);
-                reserva.setEspaco(espaco_reservado);
+                    List<Espaco> lista_espacos = espacoModel.listarEspacos();
+                    espacoView.imprimirEspacos(lista_espacos);
+                    System.out.println("Qual o id do espaco que deseja? ");
+                    int id_desejado = sc.nextInt();
+                    Espaco espaco_reservado = espacoModel.obterEspaco_byId(id_desejado);
+
+                    if (funcionario_desejado != null && espaco_reservado != null && espaco_reservado.isStatus()) {
+                        reserva = new Reserva();
+
+                        reserva.setSolicitante(funcionario_desejado);
+                        reserva.setEspaco(espaco_reservado);
+                        reservaModel.reservarEspaco(espaco_reservado);
+                    }
+                }
             }
         }
 
+
         if (reserva != null){
+            System.out.println("Qual a data para reserva?");
+            String data = get_text(sc);
+            reserva.setData(data);
             reservaModel.adicionarReserva(reserva);
             reservaView.exibirMensagem("Reserva adicionada com sucesso!");
+            reservaModel.enviarEmail(funcionario_desejado.getEmail(), data);
         }else{
             System.out.println("Falha ao adicionar reserva.");
         }

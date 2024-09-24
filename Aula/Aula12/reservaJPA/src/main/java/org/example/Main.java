@@ -14,7 +14,7 @@ import java.util.Scanner;
 import static util.Utils.get_number_in_range;
 
 public class Main {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         Scanner sc = null;
         boolean app_on = true;
 
