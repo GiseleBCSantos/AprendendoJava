@@ -1,20 +1,58 @@
-package JPA_Algaworks;
+package JPA_Algaworks.classes;
+
+import jdk.jfr.Timestamp;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
+@Table(name="veiculos")
 public class Veiculo {
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name= "cod_veiculo")
     private Long codigo;
 
-    @Column
+    @Column(length = 60, nullable = false)
     private String fabricante;
+
+    @Column(length = 60, nullable = false)
     private String modelo;
+
+    @Column(name = "ano_fabricacao", nullable = false)
     private Integer anoFabricacao;
+
+    @Column(name = "ano_modelo", nullable = false)
     private Integer anoModelo;
+
+    @Column(precision = 10, scale = 2, nullable = true)
     private BigDecimal valor;
+
+    @Column(name = "tipo_combustivel", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private TipoCombustivel tipoCombustivel;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "data_cadastro", nullable = false)
+    private Date dataCadastro;
+
+    public Date getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(Date dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
+
+    public TipoCombustivel getTipoCombustivel() {
+        return tipoCombustivel;
+    }
+
+    public void setTipoCombustivel(TipoCombustivel tipoCombustivel) {
+        this.tipoCombustivel = tipoCombustivel;
+    }
 
     public Long getCodigo() {
         return codigo;
@@ -75,5 +113,15 @@ public class Veiculo {
 
     public int hashCode(){
         return codigo != null ? codigo.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return codigo + " - "
+                + fabricante + " "
+                + modelo + ", ano "
+                + anoFabricacao + "/"
+                + anoModelo + " por "
+                + "R$" + valor;
     }
 }
