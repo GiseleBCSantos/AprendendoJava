@@ -1,0 +1,105 @@
+<!DOCTYPE>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="'layout/LayoutPadrao'"
+>
+<head></head>
+<body>
+<section layout:fragment="conteudo" class="aw-layout-content  js-content" >
+
+
+  <div class="page-header">
+    <div class="container-fluid">
+      <h1>
+        Cadastro de cliente
+      </h1>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+
+    <!--            <div class="alert  alert-danger  alert-dismissible" role="alert">-->
+    <!--                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+    <!--                <i class="fa  fa-exclamation-circle"></i> Já existe um produto com o nome informado.-->
+    <!--            </div>-->
+
+    <form method="post" th:object="${cerveja}" class="js-form-loading">
+
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <label for="nome" class="form-label">Nome</label>
+          <input type="text" id="nome" name="nome"  class="form-control">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" name="email"  class="form-control">
+        </div>
+
+        <div class="col-sm-3 form-group">
+          <label for="data_nasc" class="form-label">Data de nascimento</label>
+          <input type="date" id="data_nasc" name="data_nasc"  class="form-control">
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-sm-3 form-group">
+          <label for="senha" class="form-label">Senha</label>
+          <input type="password" id="senha" name="senha"  class="form-control">
+        </div>
+
+        <div class="col-sm-3 form-group">
+          <label for="conf_senha" class="form-label">Confirmação de senha</label>
+          <input type="password" id="conf_senha" name="conf_senha"  class="form-control">
+        </div>
+
+        <div class="col-sm-3 form-group">
+          <label class="form-label">Status</label>
+          <div class="row">
+            <div class="col-sm-12 form-group">
+              <input type="checkbox" id="status" name="status"  checked>
+              <label for="status">Ativo</label>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-sm-3 form-group">
+          <label class="form-label">Grupos</label>
+          <div class="row">
+            <div class="col-sm-6">
+              <input type="checkbox" id="administrador" name="administrador">
+              <label for="administrador">Administrador</label>
+            </div>
+
+            <div class="col-sm-6">
+              <input type="checkbox" id="vendedor" name="vendedor">
+              <label for="vendedor">Vendedor</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <button class="btn  btn-primary" type="submit">Salvar</button>
+        <a href="pesquisa-produtos.html" class="btn  btn-default">Cancelar</a>
+        <a href="#" class="btn  btn-link  aw-btn-link-danger" onclick="excluir()">Excluir este produto</a>
+      </div>
+
+    </form>
+  </div>
+
+  <div th:replace="estilo/CadastroRapidoEstilo :: modal" ></div>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+
+
+
+.bw-field-action{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.bw-field-action__icon{
+
+}
+
+.bw-glyphicon-large{
+    font-size: 2rem;
+}
+
+.form-vertical-gap-5{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

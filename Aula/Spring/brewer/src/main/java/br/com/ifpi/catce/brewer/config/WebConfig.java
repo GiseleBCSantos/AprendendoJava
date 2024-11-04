@@ -18,6 +18,8 @@ import org.thymeleaf.spring6.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
+import nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect;
+
 
 import java.time.Duration;
 
@@ -45,6 +47,8 @@ public class WebConfig implements WebMvcConfigurer, ApplicationContextAware {
         SpringTemplateEngine engine = new SpringTemplateEngine();
         engine.setEnableSpringELCompiler(true);
         engine.setTemplateResolver(templateResolver());
+
+        engine.addDialect(new LayoutDialect());
         return engine;
     }
 

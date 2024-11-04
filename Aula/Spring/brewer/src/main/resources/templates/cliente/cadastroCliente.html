@@ -1,0 +1,127 @@
+<!DOCTYPE>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="'layout/LayoutPadrao'"
+>
+<head></head>
+<body>
+<section layout:fragment="conteudo" class="aw-layout-content  js-content" >
+
+
+  <div class="page-header">
+    <div class="container-fluid">
+      <h1>
+        Cadastro de cliente
+      </h1>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+
+    <!--            <div class="alert  alert-danger  alert-dismissible" role="alert">-->
+    <!--                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+    <!--                <i class="fa  fa-exclamation-circle"></i> Já existe um produto com o nome informado.-->
+    <!--            </div>-->
+
+    <form method="post" th:object="${cerveja}" class="js-form-loading">
+
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <label for="nome" class="form-label">Nome</label>
+          <input type="text" id="nome" name="nome"  class="form-control">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4 form-group">
+          <label class="form-label">Tipo pessoa</label>
+
+            <div class="row">
+                <div class="col-sm-6 form-group">
+                  <input type="radio" id="fisica" class="form-check-input" name="tipo-pessoa">
+                  <label for="fisica" class="form-check-label mr-3">Fisica</label>
+                </div>
+
+                <div class="col-sm-6 form-group">
+                  <input type="radio" id="juridica" class="form-check-input" name="tipo-pessoa">
+                  <label for="juridica" class="form-check-label mr-3">Jurídica</label>
+                </div>
+            </div>
+          </div>
+
+        <div class="col-sm-8 form-group">
+          <label for="cpf-cnpj" class="form-label">CPF/CNPJ</label>
+          <input type="text" id="cpf-cnpj" name="cpf-cnpj"  class="form-control">
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-sm-4 form-group">
+          <label for="telefone" class="form-label">Telefone</label>
+          <input type="text" id="telefone" name="telefone"  class="form-control">
+        </div>
+
+        <div class="col-sm-8 form-group">
+          <label for="email" class="form-label">E-mail</label>
+          <input type="email" id="email" name="email"  class="form-control">
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-4 form-group">
+          <label for="logradouro" class="form-label">Logradouro</label>
+          <input type="text" id="logradouro" name="logradouro"  class="form-control">
+        </div>
+
+        <div class="col-sm-4 form-group">
+          <label for="numero" class="form-label">Número</label>
+          <input type="text" id="numero" name="numero"  class="form-control">
+        </div>
+
+        <div class="col-sm-4 form-group">
+          <label for="complemento" class="form-label">Complemento</label>
+          <input type="text" id="complemento" name="complemento"  class="form-control">
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-4 form-group">
+          <label for="cep" class="form-label">CEP</label>
+          <input type="text" id="cep" name="cep"  class="form-control">
+        </div>
+
+        <div class="col-sm-4 form-group">
+          <label for="estado" class="form-label">Estado</label>
+          <select name="estado" id="estado" class="form-control">
+            <option value="">Selecione o estado</option>
+          </select>
+        </div>
+
+        <div class="col-sm-4 form-group">
+          <label for="cidade" class="form-label">Cidade</label>
+          <select name="cidade" id="cidade" class="form-control">
+            <option value="">Selecione a cidade</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button class="btn  btn-primary" type="submit">Salvar</button>
+        <a href="pesquisa-produtos.html" class="btn  btn-default">Cancelar</a>
+        <a href="#" class="btn  btn-link  aw-btn-link-danger" onclick="excluir()">Excluir este produto</a>
+      </div>
+
+    </form>
+  </div>
+
+  <div th:replace="estilo/CadastroRapidoEstilo :: modal" ></div>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="'layout/LayoutPadrao'"
+>
+<head></head>
+<body>
+<section layout:fragment="conteudo" class="aw-layout-content  js-content" >
+
+
+  <div class="page-header">
+    <div class="container-fluid">
+      <h1>
+        Cadastro de cliente
+      </h1>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+
+    <!--            <div class="alert  alert-danger  alert-dismissible" role="alert">-->
+    <!--                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+    <!--                <i class="fa  fa-exclamation-circle"></i> Já existe um produto com o nome informado.-->
+    <!--            </div>-->
+
+    <form method="post" th:object="${cerveja}" class="js-form-loading">
+
+      <div class="row">
+        <div class="col-md-4 form-group">
+          <label for="cidade" class="form-label">Cidade</label>
+          <select name="cidade" id="cidade" class="form-control">
+            <option value="">Selecione o estado</option>
+          </select>
+        </div>
+
+        <div class="col-md-8 form-group">
+          <label for="nome" class="form-label">Nome</label>
+          <input type="text" id="nome" name="nome"  class="form-control">
+        </div>
+      </div>
+
+      
+
+      <div class="form-group">
+        <button class="btn  btn-primary" type="submit">Salvar</button>
+        <a href="pesquisa-produtos.html" class="btn  btn-default">Cancelar</a>
+        <a href="#" class="btn  btn-link  aw-btn-link-danger" onclick="excluir()">Excluir este produto</a>
+      </div>
+
+    </form>
+  </div>
+
+  <div th:replace="estilo/CadastroRapidoEstilo :: modal" ></div>
+
+</section>
+
+</body>
+</html>
