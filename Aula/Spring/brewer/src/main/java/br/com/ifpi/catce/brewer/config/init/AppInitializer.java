@@ -1,5 +1,6 @@
 package br.com.ifpi.catce.brewer.config.init;
 
+import br.com.ifpi.catce.brewer.config.ServiceConfig;
 import br.com.ifpi.catce.brewer.config.WebConfig;
 import jakarta.servlet.Filter;
 import org.springframework.web.filter.CharacterEncodingFilter;
@@ -8,7 +9,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return null;
+        return new Class<?>[]{ServiceConfig.class};
     }
 
     @Override

@@ -1,12 +1,16 @@
 package br.com.ifpi.catce.brewer.config;
 
 import br.com.ifpi.catce.brewer.controller.CervejasController;
+import br.com.ifpi.catce.brewer.controller.converter.EstiloConverter;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.number.NumberStyleFormatter;
+import org.springframework.format.support.DefaultFormattingConversionService;
+import org.springframework.format.support.FormattingConversionService;
 import org.springframework.http.CacheControl;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -21,10 +25,10 @@ import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 import nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect;
 
 
+import java.math.BigDecimal;
 import java.time.Duration;
 
 @Configuration
-@ComponentScan(basePackageClasses = {CervejasController.class})
 @EnableWebMvc
 public class WebConfig implements WebMvcConfigurer, ApplicationContextAware {
     private ApplicationContext applicationContext;
@@ -66,5 +70,16 @@ public class WebConfig implements WebMvcConfigurer, ApplicationContextAware {
         registry.addResourceHandler("/**")
                 .addResourceLocations("classpath:/static/");
 
+    }
+
+    @Bean
+    public FormattingConversionService mvcConversionService(){
+        DefaultFormattingConversionService conversionService = new DefaultFormattingConversionService();
+        conversionService.addConverter(new EstiloConverter());
+
+        NumberStyleFormatter bigDecimalFormatter = new NumberStyleFormatter("#,##0.00");
+        conversionService.addFormatterForFieldType(BigDecimal.class, bigDecimalFormatter);
+
+        return conversionService;
     }
 }

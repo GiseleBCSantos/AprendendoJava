@@ -22,16 +22,16 @@
 
 <div class="aw-layout-page">
 
-  <div th:replace="layout/fragments/BarraNavegacao :: navbar" />
+  <div th:replace="~{layout/fragments/BarraNavegacao :: navbar}" />
 
-  <div th:replace="layout/fragments/MenuLateral :: layout-sidebar" />
+  <div th:replace="~{layout/fragments/MenuLateral :: layout-sidebar}" />
 
   <section class="aw-layout-content  js-content" layout:fragment="conteudo"></section>
 
 </div>
 
 
-<div th:replace="layout/fragments/Footer :: footer" />
+<div th:replace="~{layout/fragments/Footer :: footer}" />
 
 <script th:src="@{/layout/javascripts/vendors.min.js}"></script>
 <script th:src="@{/layout/javascripts/algaworks.min.js}"></script>

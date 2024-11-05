@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE xml>
+<xml>
+    <Resource name="jdbc/brewerDB" auth="Container"
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+              type="org.apache.tomcat.jdbc.pool.DataSource"
+              driverClassName="org.postgresql.Driver"
+              url="jdbc:postgresql://localhost:5432/brewer?useSSL=false"
+              username="postgres"
+              password="postgres"
+              initialSize="5"
+              minIdle="5"
+              maxActive="20"
+              maxWait="10000"
+              validationQuery="SELECT 1"
+              validationInterval="30000"
+              testOnBorrow="true" />
+</xml>

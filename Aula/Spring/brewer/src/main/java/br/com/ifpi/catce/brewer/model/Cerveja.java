@@ -1,28 +1,41 @@
 package br.com.ifpi.catce.brewer.model;
 
+import br.com.ifpi.catce.brewer.validation.SKU;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.util.Objects;
 
+@ToString
 @Entity
 @Table(name = "cerveja")
 public class Cerveja {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
+
+
+    @SKU
     @NotBlank(message = "SKU é obrigatório")
     private String sku;
+
     @NotBlank(message = "Nome é obrigatório")
     private String nome;
+
     @Size(min = 1, max = 50, message = "O tamanho da descrição deve estar entre 1 e 50")
     private String descricao;
+
     private BigDecimal valor;
+
     @Column(name = "teor_alcoolico")
     private BigDecimal teorAlcoolico;
+
     private BigDecimal comissao;
+
     @Column(name = "quantidade_estoque")
     private Integer quantidadeEstoque;
 
