@@ -1,6 +1,9 @@
 package br.com.ifpi.catce.brewer.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.io.Serializable;
 import java.util.List;
@@ -16,6 +19,8 @@ public class Estilo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 
+    @NotBlank(message = "O campo nome é obrigatório")
+    @Size(max = 15, message = "Tamanho máximo de 15 caracteres")
     private String nome;
 
     @OneToMany(mappedBy = "estilo")

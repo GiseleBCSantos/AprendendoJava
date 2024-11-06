@@ -5,7 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 @EnableJpaRepositories(basePackages = "br.com.ifpi.catce.brewer.repository")
 public interface Estilos extends JpaRepository<Estilo, Long> {
+
+    public Optional<Estilo> findByNomeIgnoreCase(String nome);
 }

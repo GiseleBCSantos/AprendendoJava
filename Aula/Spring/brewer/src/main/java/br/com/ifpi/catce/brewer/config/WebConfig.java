@@ -12,10 +12,12 @@ import org.springframework.format.number.NumberStyleFormatter;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
 import org.springframework.http.CacheControl;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.FixedLocaleResolver;
 import org.thymeleaf.spring6.ISpringTemplateEngine;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 import org.thymeleaf.spring6.view.ThymeleafViewResolver;
@@ -27,6 +29,7 @@ import nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect;
 
 import java.math.BigDecimal;
 import java.time.Duration;
+import java.util.Locale;
 
 @Configuration
 @EnableWebMvc
@@ -80,6 +83,14 @@ public class WebConfig implements WebMvcConfigurer, ApplicationContextAware {
         NumberStyleFormatter bigDecimalFormatter = new NumberStyleFormatter("#,##0.00");
         conversionService.addFormatterForFieldType(BigDecimal.class, bigDecimalFormatter);
 
+        NumberStyleFormatter integerFormatter = new NumberStyleFormatter("#,##0");
+        conversionService.addFormatterForFieldType(Integer.class, integerFormatter);
+
         return conversionService;
+    }
+
+    @Bean
+    public LocaleResolver localeResolver(){
+        return new FixedLocaleResolver(new Locale("pt", "BR"));
     }
 }
