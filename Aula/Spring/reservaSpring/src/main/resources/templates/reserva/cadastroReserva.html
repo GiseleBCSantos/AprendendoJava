@@ -30,10 +30,45 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-sm-2 form-group">
+                <input type="radio" class="form-check-input" name="tipoReserva" id="opcao_equipamento" value="equipamento" onclick="mostrarOpcoes()"/>
+                <label for="opcao_equipamento" class="form-check-label mr-3">Equipamento</label>
+            </div>
+
+            <div class="col-sm-2 form-group">
+                <input type="radio" class="form-check-input" name="tipoReserva" id="opcao_espaco" value="espaco"  onclick="mostrarOpcoes()"/>
+                <label for="opcao_espaco" class="form-check-label mr-3">Espaço</label>
+            </div>
+        </div>
+
+        <div class="row opcao_reserva" id="equipamento">
+            <label for="equipamento_select" class="control-label">Equipamentos</label>
+            <select  name="equipamento" id="equipamento_select" class="form-control">
+                <option value="">Selecione o equipamento</option>
+            </select>
+        </div>
+
+        <div class="row opcao_reserva" id="espaco">
+            <label for="espaco_select" class="control-label">Espaços</label>
+            <select  name="espaco" id="espaco_select" class="form-control">
+                <option value="">Selecione o espaço</option>
+            </select>
+        </div>
+
+
+
+
+
+
         <div class="form-group">
             <button class="btn  btn-primary" type="submit">Salvar</button>
             <a href="#" class="btn  btn-default">Cancelar</a>
         </div>
+
+
+
+
     </form>
 
 </section>

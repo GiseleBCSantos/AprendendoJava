@@ -12,24 +12,24 @@
 <section layout:fragment="conteudo">
     <h2>Cadastro de equipamentos</h2>
 
-    <form class="">
+    <form method="post" class="" th:object="${equipamento}">
 
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label for="descricao" class="form-label">Descrição</label>
-                <input type="text" id="descricao" class="form-control">
+                <input th:field="*{descricao}" type="text" id="descricao" class="form-control">
             </div>
         </div>
 
         <div class="row">
             <div class="col-sm-2 form-group">
-                <label for="quantidadeDisponivel" class="form-label">Quantidade disponível</label>
-                <input type="number" id="quantidadeDisponivel" class="form-control">
+                <label  for="quantidadeDisponivel" class="form-label">Quantidade disponível</label>
+                <input th:field="*{quantidadeDisponivel}" type="number" id="quantidadeDisponivel" class="form-control">
             </div>
 
             <div class="col-sm-2 form-group">
                 <label for="quantidadeTotal" class="form-label">Quantidade total</label>
-                <input type="number" id="quantidadeTotal" class="form-control">
+                <input th:field="*{quantidadeTotal}" type="number" id="quantidadeTotal" class="form-control">
             </div>
 
         </div>

@@ -12,5 +12,5 @@
 
 .collapse.show{
     padding-left: 40px;
-    transition: padding-left .5s ease;
+    transition: padding-left .3s ease;
 }
