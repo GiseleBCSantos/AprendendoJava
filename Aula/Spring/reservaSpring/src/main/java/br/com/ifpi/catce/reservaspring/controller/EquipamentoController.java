@@ -2,6 +2,8 @@ package br.com.ifpi.catce.reservaspring.controller;
 
 import br.com.ifpi.catce.reservaspring.model.Equipamento;
 import br.com.ifpi.catce.reservaspring.repository.EquipamentoRepository;
+import br.com.ifpi.catce.reservaspring.service.EquipamentoService;
+import br.com.ifpi.catce.reservaspring.service.exceptions.DescricaoJaCadastrada;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,11 +20,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class EquipamentoController {
 
     @Autowired
-    private EquipamentoRepository equipamentoRepository;
+    private EquipamentoService equipamentoService;
 
     @GetMapping("/listar")
     public ModelAndView listar() {
         ModelAndView mv = new ModelAndView("/equipamento/listarEquipamento");
+        mv.addObject("equipamentos", equipamentoService.listar());
         return mv;
     }
 
@@ -35,11 +38,15 @@ public class EquipamentoController {
 
     @PostMapping("/novo")
     public ModelAndView cadastroSubmit(@Valid Equipamento equipamento, BindingResult result, RedirectAttributes attributes) {
-        System.out.println(equipamento);
         if (result.hasErrors()) {
             return cadastro(equipamento);
         }
-        equipamentoRepository.save(equipamento);
+        try{
+            equipamentoService.salvar(equipamento);
+        } catch (DescricaoJaCadastrada e) {
+            result.rejectValue("descricao", e.getMessage(), e.getMessage());
+            return cadastro(equipamento);
+        }
         attributes.addFlashAttribute("mensagem", "Equipamento cadastrado com sucesso!");
         return new ModelAndView("redirect:/equipamentos/listar");
     }

@@ -14,22 +14,24 @@
 
     <form method="post" class="" th:object="${equipamento}">
 
+        <th:block th:insert="~{fragments/MensagemErro}"></th:block>
+
         <div class="row">
-            <div class="col-sm-6 form-group">
-                <label for="descricao" class="form-label">Descrição</label>
+            <div class="col-sm-6 form-group" th:classappend="${#fields.hasErrors('descricao')} ? has-error">
+                <label for="descricao" class="form-label control-label">Descrição</label>
                 <input th:field="*{descricao}" type="text" id="descricao" class="form-control">
             </div>
         </div>
 
         <div class="row">
-            <div class="col-sm-2 form-group">
-                <label  for="quantidadeDisponivel" class="form-label">Quantidade disponível</label>
+            <div class="col-sm-2 form-group" th:classappend="${#fields.hasErrors('quantidadeDisponivel')} ? has-error">
+                <label  for="quantidadeDisponivel" class="form-label control-label">Quantidade disponível</label>
                 <input th:field="*{quantidadeDisponivel}" type="number" id="quantidadeDisponivel" class="form-control">
             </div>
 
-            <div class="col-sm-2 form-group">
-                <label for="quantidadeTotal" class="form-label">Quantidade total</label>
-                <input th:field="*{quantidadeTotal}" type="number" id="quantidadeTotal" class="form-control">
+            <div class="col-sm-2 form-group" th:classappend="${#fields.hasErrors('quantidadeTotal')} ? has-error">
+                <label for="quantidadeTotal" class="form-label control-label">Quantidade total</label>
+                <input th:field="*{quantidadeTotal}" type="number" id="quantidadeTotal" class="form-control" >
             </div>
 
         </div>
