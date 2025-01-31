@@ -27,15 +27,15 @@
     <form method="post" th:object="${cerveja}" class="js-form-loading">
 
       <div class="row">
-        <div class="col-md-4 form-group">
-          <label for="cidade" class="form-label">Cidade</label>
+        <div class="col-md-4 form-group bw-required">
+          <label for="cidade" class="form-label control-label">Cidade</label>
           <select name="cidade" id="cidade" class="form-control">
             <option value="">Selecione o estado</option>
           </select>
         </div>
 
-        <div class="col-md-8 form-group">
-          <label for="nome" class="form-label">Nome</label>
+        <div class="col-md-8 form-group bw-required">
+          <label for="nome" class="form-label control-label">Nome</label>
           <input type="text" id="nome" name="nome"  class="form-control">
         </div>
       </div>

@@ -1,7 +1,6 @@
 package br.com.ifpi.catce.brewer.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 

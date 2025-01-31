@@ -2,7 +2,10 @@ package br.com.ifpi.catce.brewer.config.init;
 
 import br.com.ifpi.catce.brewer.config.ServiceConfig;
 import br.com.ifpi.catce.brewer.config.WebConfig;
+import com.fasterxml.jackson.databind.ser.std.StdKeySerializers;
 import jakarta.servlet.Filter;
+import jakarta.servlet.MultipartConfigElement;
+import jakarta.servlet.ServletRegistration;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -29,5 +32,10 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
         characterEncodingFilter.setForceEncoding(true);
 
         return new Filter[] {characterEncodingFilter};
+    }
+
+    @Override
+    protected void customizeRegistration(ServletRegistration.Dynamic registration){
+        registration.setMultipartConfig(new MultipartConfigElement(""));
     }
 }

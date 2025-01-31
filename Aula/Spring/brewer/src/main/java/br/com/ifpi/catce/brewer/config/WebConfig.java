@@ -2,12 +2,15 @@ package br.com.ifpi.catce.brewer.config;
 
 import br.com.ifpi.catce.brewer.controller.CervejasController;
 import br.com.ifpi.catce.brewer.controller.converter.EstiloConverter;
+import br.com.ifpi.catce.brewer.repository.Cervejas;
+import br.com.ifpi.catce.brewer.thymeleaf.processor.BrewerDialect;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.format.number.NumberStyleFormatter;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
@@ -33,6 +36,8 @@ import java.util.Locale;
 
 @Configuration
 @EnableWebMvc
+@EnableSpringDataWebSupport
+@ComponentScan(basePackageClasses = Cervejas.class)
 public class WebConfig implements WebMvcConfigurer, ApplicationContextAware {
     private ApplicationContext applicationContext;
 
@@ -56,6 +61,7 @@ public class WebConfig implements WebMvcConfigurer, ApplicationContextAware {
         engine.setTemplateResolver(templateResolver());
 
         engine.addDialect(new LayoutDialect());
+        engine.addDialect(new BrewerDialect());
         return engine;
     }
 

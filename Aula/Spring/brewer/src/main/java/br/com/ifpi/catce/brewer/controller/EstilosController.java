@@ -1,10 +1,16 @@
 package br.com.ifpi.catce.brewer.controller;
 
+import br.com.ifpi.catce.brewer.controller.page.PageWrapper;
 import br.com.ifpi.catce.brewer.model.Estilo;
+import br.com.ifpi.catce.brewer.repository.Estilos;
+import br.com.ifpi.catce.brewer.repository.filter.EstiloFilter;
 import br.com.ifpi.catce.brewer.service.CadastroEstiloService;
 import br.com.ifpi.catce.brewer.service.exception.NomeEstiloJaCadastradoException;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,6 +25,9 @@ public class EstilosController {
 
     @Autowired
     private CadastroEstiloService cadastroEstiloService;
+
+    @Autowired
+    private Estilos estilos;
 
 
     @GetMapping("/novo")
@@ -58,5 +67,16 @@ public class EstilosController {
 
 
         return ResponseEntity.ok(estilo);
+    }
+
+
+    @GetMapping
+    public ModelAndView pesquisar(EstiloFilter estiloFilter, BindingResult result, @PageableDefault(size = 5) Pageable pageable, HttpServletRequest request) {
+        ModelAndView mv = new ModelAndView("estilo/PesquisaEstilos");
+
+        PageWrapper<Estilo> paginaWrapper = new PageWrapper<>(estilos.filtrar(estiloFilter, pageable), request);
+        mv.addObject("pagina", paginaWrapper);
+
+        return mv;
     }
 }
